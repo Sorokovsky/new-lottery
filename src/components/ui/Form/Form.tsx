@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { IForm } from './Form.interface';
 import cn from "clsx";
 import Input from '../Input/Input';
+import styles from './Form.module.sass';
 
 const Form: FC<IForm> = ({onSubmit, fields, submitText}): JSX.Element => {
     const { register, handleSubmit } = useForm();
@@ -10,14 +11,15 @@ const Form: FC<IForm> = ({onSubmit, fields, submitText}): JSX.Element => {
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
+            className={cn(styles.form)}
         >
             {fields.map(({options, id, ...rest}) => {
                 return (
-                <Input
-                    key={id}
-                    {...rest}
-                    id={id}
-                    {...register(id, options)}
+                    <Input
+                        key={id}
+                        id={id}
+                        {...rest}
+                        {...register(id, options)}
                     />
                 );
             })}
