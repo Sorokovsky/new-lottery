@@ -12,7 +12,7 @@ export const HomePage: FC = (): JSX.Element => {
         <main>
             <Form
                 onSubmit={createLottery}
-                submitText={"Save"}
+                submitText={"Створити лотерею"}
                 fields={indexFields}
             />
         </main>
