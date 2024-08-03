@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, ChangeEventHandler } from "react";
 import type { RegisterOptions } from "react-hook-form";
 
 export type TField = InputHTMLAttributes<HTMLInputElement> & {
@@ -6,4 +6,6 @@ export type TField = InputHTMLAttributes<HTMLInputElement> & {
     placeholder?: string;
     options: RegisterOptions;
     className?: string;
+    description?: string;
+    validate?: ChangeEventHandler<HTMLInputElement>;
 };

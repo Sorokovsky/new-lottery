@@ -4,6 +4,7 @@ import { IForm } from './Form.interface';
 import cn from "clsx";
 import Input from '../Input/Input';
 import styles from './Form.module.sass';
+import Button from '../Button/Button';
 
 const Form: FC<IForm> = ({onSubmit, fields, submitText}): JSX.Element => {
     const { register, handleSubmit } = useForm();
@@ -26,7 +27,7 @@ const Form: FC<IForm> = ({onSubmit, fields, submitText}): JSX.Element => {
                         />
                     );
                 })}
-                <button type="submit">{submitText}</button>
+                <Button>{submitText}</Button>
             </form>
         </section>
     );

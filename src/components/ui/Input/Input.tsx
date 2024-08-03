@@ -4,21 +4,27 @@ import cn from "clsx";
 import styles from "./Input.module.sass";
 
 const Input: FC<IInput> = forwardRef<HTMLInputElement, IInput>(
-  ({ className = "", onChange = () => { }, ...rest }, ref): JSX.Element => {
+  ({ className = "", onChange = () => { }, validate = () => {}, id, description, ...rest }, ref): JSX.Element => {
   const [value, setValue] = useState(0);
-  const onChangeHandler = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(+event.target.value);
-    onChange(event);
+    const onChangeHandler = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+      validate(event);
+      setValue(+event.target.value);
+      onChange(event);
   }, [value]);
-  return (
-    <input
-      className={cn(className, styles.input)}
-      value={value}
-      onChange={onChangeHandler}
-      ref={ref}
-      {...rest}
-    />
-  );
-});
+    return (
+      <>
+        {description && <label htmlFor={id}>{description}</label>}
+        <input
+          className={cn(className, styles.input)}
+          value={value}
+          onChange={onChangeHandler}
+          id={id}
+          ref={ref}
+          {...rest}
+        />
+      </>
+    );
+  }
+);
 
 export default memo(Input);
