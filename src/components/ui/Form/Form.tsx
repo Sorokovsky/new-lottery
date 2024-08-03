@@ -8,7 +8,9 @@ const Form: FC<IForm> = ({onSubmit, fields, submitText}): JSX.Element => {
     const { register, handleSubmit } = useForm();
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form
+            onSubmit={handleSubmit(onSubmit)}
+        >
             {fields.map(({options, id, ...rest}) => {
                 return (
                 <Input
