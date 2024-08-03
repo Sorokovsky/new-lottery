@@ -2,20 +2,22 @@ import { FC, memo } from 'react';
 import { useForm } from 'react-hook-form';
 import { IForm } from './Form.interface';
 import cn from "clsx";
+import Input from '../Input/Input';
 
 const Form: FC<IForm> = ({onSubmit, fields, submitText}): JSX.Element => {
     const { register, handleSubmit } = useForm();
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            {fields.map(({type, options, className = "", placeholder, id}) => {
-                return <input
-                    type={type}
-                    className={cn(className)}
-                    placeholder={placeholder}
+            {fields.map(({options, id, ...rest}) => {
+                return (
+                <Input
                     key={id}
+                    {...rest}
+                    id={id}
                     {...register(id, options)}
-                />;
+                    />
+                );
             })}
 
             <button type="submit">{submitText}</button>
