@@ -9,23 +9,26 @@ const Form: FC<IForm> = ({onSubmit, fields, submitText}): JSX.Element => {
     const { register, handleSubmit } = useForm();
 
     return (
-        <form
-            onSubmit={handleSubmit(onSubmit)}
-            className={cn(styles.form)}
+        <section
+            className={cn(styles.wrapper)}
         >
-            {fields.map(({options, id, ...rest}) => {
-                return (
-                    <Input
-                        key={id}
-                        id={id}
-                        {...rest}
-                        {...register(id, options)}
-                    />
-                );
-            })}
-
-            <button type="submit">{submitText}</button>
-        </form>
+            <form
+                onSubmit={handleSubmit(onSubmit)}
+                className={cn(styles.form)}
+            >
+                {fields.map(({options, id, ...rest}) => {
+                    return (
+                        <Input
+                            key={id}
+                            id={id}
+                            {...rest}
+                            {...register(id, options)}
+                        />
+                    );
+                })}
+                <button type="submit">{submitText}</button>
+            </form>
+        </section>
     );
 };
 
