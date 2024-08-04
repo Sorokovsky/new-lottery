@@ -34,6 +34,12 @@ export default defineConfig({
               sizes: '1917x923',
               platform: 'all',
               src: 'images/pc.png'
+            },
+            {
+              form_factor: 'wide',
+              sizes: '360x740',
+              platform: 'all',
+              src: 'images/mobile.png',
             }
           ],
         },
