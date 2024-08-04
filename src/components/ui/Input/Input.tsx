@@ -8,9 +8,8 @@ const Input: FC<IInput> = forwardRef<HTMLInputElement, IInput>(
   ({ className = "", onChange = () => { }, validate = () => {}, id, description, ...rest }, ref): JSX.Element => {
     const [value, setValue] = useState(0);
     const debauncedChange = useDebounce(onChange, 1000);
-    const debauncedValidate = useDebounce(validate, 1000);
     const onChangeHandler = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-      debauncedValidate(event);
+      validate(event);
       setValue(+event.target.value);
       debauncedChange(event);
   }, [value]);
