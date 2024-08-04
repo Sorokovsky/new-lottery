@@ -1,4 +1,5 @@
 import { TField } from "../types/field.type";
+import { FormEvent } from 'react';
 
 export const indexFields: TField[] = [
     {
@@ -6,10 +7,11 @@ export const indexFields: TField[] = [
         type: 'number',
         description: "Введіть число учасників: ",
         options: {},
-        validate: (event) => {
-            const value: number = +event.target.value;
+        validate: (event: FormEvent<HTMLInputElement>) => {
+            const target = event.target as HTMLInputElement;
+            const value: number = +target.value;
             if (value < 0) {
-                event.target.value = '0';
+                target.value = '0';
             }
         }
     }

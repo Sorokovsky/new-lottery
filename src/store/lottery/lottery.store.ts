@@ -25,5 +25,7 @@ export const useLotteryStore = create<LotteryStore>((set) => ({
     },
 
     parseFromText(text: string): void {
+        console.log(text);
+        
     },
 }));
