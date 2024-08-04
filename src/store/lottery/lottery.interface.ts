@@ -9,4 +9,5 @@ export interface LotteryStore {
     addPerson: (name: string) => void;
     parseFromText: (text: string) => void;
     clear: () => void;
+    editPerson: (id: number, newName: string) => void;
 };

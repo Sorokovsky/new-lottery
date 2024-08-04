@@ -17,10 +17,10 @@ export const useLotteryStore = create<LotteryStore>((set) => ({
     clear() {
         set(() => {
             return {
-                    people: [],
-                    lastId: 1
-                }
+                people: [],
+                lastId: 1
             }
+        }
         );
     },
 
@@ -28,4 +28,19 @@ export const useLotteryStore = create<LotteryStore>((set) => ({
         console.log(text);
         
     },
+
+    editPerson(id, newName) {
+        const people = [...this.people];
+        for (let i = 0; i < people.length; i++) {
+            if (people[i].id === id) {
+                people[i].name = newName;
+            }
+        }
+        set(state => {
+            return {
+                ...state,
+                people: people,
+            };
+        });
+   }, 
 }));
