@@ -1,3 +1,3 @@
-import { HTMLAttributes } from "react";
+import { ButtonHTMLAttributes } from "react";
 
-export interface IButton extends HTMLAttributes<HTMLButtonElement> { };
+export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> { };
