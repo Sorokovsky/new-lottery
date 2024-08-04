@@ -8,7 +8,12 @@
       "path": "./tsconfig.node.json"
     }
   ],
+
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-  },
+    "types": [
+       "vite-plugin-pwa/client",
+       "vite-plugin-pwa/react"
+    ]
+  }
 }
