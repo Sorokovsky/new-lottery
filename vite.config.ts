@@ -14,7 +14,7 @@ export default defineConfig({
           globPatterns: ['**/*.{js,css,html}'],
           cleanupOutdatedCaches: true
         },
-        includeAssets: ['./images/favicon.ico',],
+        includeAssets: ['./images/pwa/favicon.ico',],
         manifest: {
           name: 'Розіграж призів',
           short_name: 'Лотерея',
@@ -22,24 +22,29 @@ export default defineConfig({
           theme_color: '#ffffff',
           orientation: 'landscape',
           icons: [
-            {
-              src: './images/logo.svg',
-              sizes: '50x50',
-              type: 'image/svg'
-            }
-          ],
+          {
+            src: "images/pwa/android-chrome-192x192.png",
+            sizes: "192x192",
+            type: "image/png"
+          },
+          {
+            src: "images/pwa/android-chrome-512x512.png",
+            sizes: "512x512",
+            type: "image/png"
+          }
+        ],
           screenshots: [
             {
               form_factor: 'wide',
               sizes: '1917x923',
-              platform: 'all',
-              src: 'images/pc.png'
+              platform: 'pc',
+              src: 'images/pwa/pc.png'
             },
             {
-              form_factor: 'wide',
-              sizes: '360x740',
-              platform: 'all',
-              src: 'images/mobile.png',
+              form_factor: 'narrow',
+              sizes: '361x737',
+              platform: 'mobile',
+              src: 'images/pwa/mobile.png',
             }
           ],
         },
