@@ -14,6 +14,16 @@ export const useLotteryStore = create<LotteryStore>((set) => ({
         ));
     },
 
+    clear() {
+        set(() => {
+            return {
+                    people: [],
+                    lastId: 1
+                }
+            }
+        );
+    },
+
     parseFromText(text: string): void {
     },
 }));

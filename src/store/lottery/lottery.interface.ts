@@ -8,4 +8,5 @@ export interface LotteryStore {
     lastId: number;
     addPerson: (name: string) => void;
     parseFromText: (text: string) => void;
+    clear: () => void;
 };
