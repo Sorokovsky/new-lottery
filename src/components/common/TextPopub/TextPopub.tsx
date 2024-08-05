@@ -15,6 +15,7 @@ const TextPopub: FC<ITextPopub> = (): JSX.Element => {
 
     const save = useCallback(() => {
         parseFromText(value);
+        setIsOpen(false);
     }, [value]);
 
     const changeHandler = useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
