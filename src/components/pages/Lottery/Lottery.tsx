@@ -1,11 +1,11 @@
-import { memo } from 'react'
+import { FC, memo } from 'react'
 import Table from '../../common/Table/Table';
 import { useLotteryStore } from '../../../store/lottery/lottery.store';
 import cn from 'clsx';
 import styles from "./Lottery.module.sass";
 import TextPopub from '../../common/TextPopub/TextPopub';
 
-const LotteryPage = () => {
+const LotteryPage: FC = () => {
   const people = useLotteryStore(state => state.people);
 
   return (
@@ -14,7 +14,7 @@ const LotteryPage = () => {
         people={people}
         title="Список учасників"
       />
-      <TextPopub />
+     <TextPopub />
     </main>
   )
 }

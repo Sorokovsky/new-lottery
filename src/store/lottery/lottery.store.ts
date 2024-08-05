@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { parseFromText } from "../../utils/parseFromText";
 import { LotteryStore } from "./lottery.interface";
 
 export const useLotteryStore = create<LotteryStore>((set) => ({
@@ -38,14 +39,15 @@ export const useLotteryStore = create<LotteryStore>((set) => ({
             };
         });
     }, 
-    
-    setState(people, lastId) {
+
+    parseFromText(text) {
+        const people = parseFromText(text);
         set(state => {
             return {
                 ...state,
                 people,
-                lastId
-            };
-        });
+                lastId: people.length + 1,
+            }
+        })
     },
 }));

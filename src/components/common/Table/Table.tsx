@@ -1,4 +1,4 @@
-import { FC, memo, useState, useCallback, useRef, useId } from 'react';
+import { FC, memo, useState, useCallback, useRef } from 'react';
 import { ITable } from './Table.interface';
 import cn from "clsx";
 import styles from "./Table.module.sass";
@@ -6,6 +6,7 @@ import Row from '../Row/Row';
 import AddPerson from '../AddPerson/AddPerson';
 import Button from '../../ui/Button/Button';
 import { randomInteger } from '../../../utils/random';
+import { getId } from '../../../utils/getId';
 
 const Table: FC<ITable> = ({ title, people }) => {
     const [closed, setClosed] = useState(false);
@@ -40,7 +41,7 @@ const Table: FC<ITable> = ({ title, people }) => {
             <table ref={table} className={cn(styles.table, {
                 [styles.closed]: closed
             })}>
-                {people.map(person => <Row key={useId()} person={person} />)}
+                {people.map(person => <Row key={getId()} person={person} />)}
                 <tbody>
                     <tr>
                         <td>

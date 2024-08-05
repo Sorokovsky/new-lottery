@@ -1,24 +1,25 @@
-import { FC, memo, useCallback, useState } from "react";
+import { ChangeEvent, FC, memo, useCallback, useState } from "react";
 import { ITextPopub } from "./TextPopub.interface";
 import cn from "clsx";
 import styles from "./TextPopub.module.sass";
 import Button from "../../ui/Button/Button";
 import { useLotteryStore } from '../../../store/lottery/lottery.store';
-import { IPerson } from "../../../store/lottery/lottery.interface";
 
 const TextPopub: FC<ITextPopub> = (): JSX.Element => {
     const [isOpen, setIsOpen] = useState(false);
     const [value, setValue] = useState("");
-    const setState = useLotteryStore(state => state.setState);
+    const parseFromText = useLotteryStore(state => state.parseFromText);
     const toggle = useCallback(() => {
         setIsOpen(prev => !prev);
     }, [isOpen, setIsOpen]);
 
     const save = useCallback(() => {
-        const result: IPerson[] = [];
-        
-        setState(result, result.length + 1);
+        parseFromText(value);
     }, [value]);
+
+    const changeHandler = useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
+        setValue(event.target.value);
+    }, []);
     return (
         <>
             <button
@@ -37,7 +38,7 @@ const TextPopub: FC<ITextPopub> = (): JSX.Element => {
                 <div className={cn(styles.wrapper)}>
                     <textarea
                         value={value}
-                        onChange={(event) => { setValue(event.target.value); }}
+                        onChange={changeHandler}
                     />
                     <Button
                         type="button"
