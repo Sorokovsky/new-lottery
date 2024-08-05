@@ -1,4 +1,4 @@
-import { FC, memo, useState, useCallback, forwardRef, ChangeEvent, FormEvent } from 'react';
+import { FC, memo, useState, useCallback, forwardRef } from 'react';
 import { IInput } from './Input.interface';
 import cn from "clsx";
 import styles from "./Input.module.sass";

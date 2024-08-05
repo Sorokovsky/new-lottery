@@ -1,4 +1,4 @@
-import { FC, memo, useState, useCallback, useRef, useEffect } from 'react';
+import { FC, memo, useState, useCallback, useRef } from 'react';
 import { ITable } from './Table.interface';
 import cn from "clsx";
 import styles from "./Table.module.sass";
