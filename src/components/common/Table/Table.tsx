@@ -16,7 +16,7 @@ const Table: FC<ITable> = ({ title, people }) => {
         const randomId = randomInteger(0, people.length - 1);
         const selected = people[randomId];       
         setResult(`${selected.id}.${selected.name}`);
-    }, []);
+    }, [people]);
 
     const closeHandler = useCallback(() => {
         setClosed(prev => !prev);

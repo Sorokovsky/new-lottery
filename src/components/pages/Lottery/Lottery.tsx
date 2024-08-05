@@ -7,6 +7,8 @@ import TextPopub from '../../common/TextPopub/TextPopub';
 
 const LotteryPage: FC = () => {
   const people = useLotteryStore(state => state.people);
+  console.log(people);
+  
 
   return (
     <main className={cn(styles.page)}>
