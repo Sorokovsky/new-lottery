@@ -24,11 +24,6 @@ export const useLotteryStore = create<LotteryStore>((set) => ({
         );
     },
 
-    parseFromText(text: string): void {
-        console.log(text);
-        
-    },
-
     editPerson(id, newName) {        
         set(state => {
             const people = [...state.people];
@@ -42,5 +37,15 @@ export const useLotteryStore = create<LotteryStore>((set) => ({
                 people: people,
             };
         });
-   }, 
+    }, 
+    
+    setState(people, lastId) {
+        set(state => {
+            return {
+                ...state,
+                people,
+                lastId
+            };
+        });
+    },
 }));

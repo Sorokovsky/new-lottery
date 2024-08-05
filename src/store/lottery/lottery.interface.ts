@@ -7,7 +7,7 @@ export interface LotteryStore {
     people: IPerson[];
     lastId: number;
     addPerson: (name: string) => void;
-    parseFromText: (text: string) => void;
     clear: () => void;
     editPerson: (id: number, newName: string) => void;
+    setState: (people: IPerson[], lastIndex: number) => void;
 };

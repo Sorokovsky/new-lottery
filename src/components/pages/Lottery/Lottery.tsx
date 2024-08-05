@@ -3,6 +3,7 @@ import Table from '../../common/Table/Table';
 import { useLotteryStore } from '../../../store/lottery/lottery.store';
 import cn from 'clsx';
 import styles from "./Lottery.module.sass";
+import TextPopub from '../../common/TextPopub/TextPopub';
 
 const LotteryPage = () => {
   const people = useLotteryStore(state => state.people);
@@ -13,6 +14,7 @@ const LotteryPage = () => {
         people={people}
         title="Список учасників"
       />
+      <TextPopub />
     </main>
   )
 }
