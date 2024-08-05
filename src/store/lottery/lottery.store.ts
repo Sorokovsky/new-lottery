@@ -29,14 +29,14 @@ export const useLotteryStore = create<LotteryStore>((set) => ({
         
     },
 
-    editPerson(id, newName) {
-        const people = [...this.people];
-        for (let i = 0; i < people.length; i++) {
-            if (people[i].id === id) {
-                people[i].name = newName;
-            }
-        }
+    editPerson(id, newName) {        
         set(state => {
+            const people = [...state.people];
+            for (let i = 0; i < people.length; i++) {
+                if (people[i].id === id) {
+                    people[i].name = newName;
+                }
+            }
             return {
                 ...state,
                 people: people,

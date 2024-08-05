@@ -5,11 +5,17 @@ import styles from "./Table.module.sass";
 import Row from '../Row/Row';
 import AddPerson from '../AddPerson/AddPerson';
 import Button from '../../ui/Button/Button';
+import { randomInteger } from '../../../utils/random';
 
 const Table: FC<ITable> = ({ title, people }) => {
     const [closed, setClosed] = useState(false);
     const [result, setResult] = useState("Тут буде переможець");
     const table = useRef<HTMLTableElement>(null);
+    const selectRandom = useCallback(() => {
+        const randomId = randomInteger(0, people.length - 1);
+        setResult(`${randomId + 1}.${people[randomId].name}`);
+    }, []);
+
     const closeHandler = useCallback(() => {
         setClosed(prev => !prev);
     }, [closed]);
@@ -42,7 +48,12 @@ const Table: FC<ITable> = ({ title, people }) => {
                     </tr>
                 </tbody>
             </table>
-            <Button>Розіграти</Button>
+            <Button
+                className={cn(styles.button)}
+                onClick={selectRandom}
+            >
+                Розіграти
+            </Button>
             <span className={cn(styles.result)}>{result}</span>
         </div>
     );
