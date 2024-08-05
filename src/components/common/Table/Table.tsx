@@ -1,4 +1,4 @@
-import { FC, memo, useState, useCallback, useRef } from 'react';
+import { FC, memo, useState, useCallback, useRef, useId } from 'react';
 import { ITable } from './Table.interface';
 import cn from "clsx";
 import styles from "./Table.module.sass";
@@ -13,7 +13,8 @@ const Table: FC<ITable> = ({ title, people }) => {
     const table = useRef<HTMLTableElement>(null);
     const selectRandom = useCallback(() => {
         const randomId = randomInteger(0, people.length - 1);
-        setResult(`${randomId + 1}.${people[randomId].name}`);
+        const selected = people[randomId];       
+        setResult(`${selected.id}.${selected.name}`);
     }, []);
 
     const closeHandler = useCallback(() => {
@@ -39,7 +40,7 @@ const Table: FC<ITable> = ({ title, people }) => {
             <table ref={table} className={cn(styles.table, {
                 [styles.closed]: closed
             })}>
-                {people.map(person => <Row key={person.id} person={person} />)}
+                {people.map(person => <Row key={useId()} person={person} />)}
                 <tbody>
                     <tr>
                         <td>
